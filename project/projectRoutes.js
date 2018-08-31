@@ -51,4 +51,15 @@ router.post("/", (req, res) => {
     }
 });
 
+router.put("/:id", (req, res) => {
+    db.update(req.params.id, req.body)
+    .then(proj => {
+        res.status(200).json(proj);
+    })
+    .catch(err => {
+        console.log("error", err);
+        res.status(500).json({message: "could not update"});
+    });
+});
+
 module.exports = router;
