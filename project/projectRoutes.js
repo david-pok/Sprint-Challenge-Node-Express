@@ -37,28 +37,39 @@ router.get("/:id", (req, res) => {
 // });
 
 router.post("/", (req, res) => {
-    if(req.body.name.length < 128) {
-        db.insert(req.body)
-        .then(proj => {
-            res.status(201).json(proj);
-        })
-        .catch(err => {
-            console.log("error", err);
-            res.status(500).json({error: "could not post"});
-        });
-    } else {
-        res.status(401).json({ error: "too long"});
-    }
+  if (req.body.name.length < 128) {
+    db.insert(req.body)
+      .then(proj => {
+        res.status(201).json(proj);
+      })
+      .catch(err => {
+        console.log("error", err);
+        res.status(500).json({ error: "could not post" });
+      });
+  } else {
+    res.status(401).json({ error: "too long" });
+  }
 });
 
 router.put("/:id", (req, res) => {
-    db.update(req.params.id, req.body)
+  db.update(req.params.id, req.body)
     .then(proj => {
-        res.status(200).json(proj);
+      res.status(200).json(proj);
+    })
+    .catch(err => {
+      console.log("error", err);
+      res.status(500).json({ message: "could not update" });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+    db.remove(req.params.id)
+    .then(proj => {
+        res.status(200).json({message: "deleted"});
     })
     .catch(err => {
         console.log("error", err);
-        res.status(500).json({message: "could not update"});
+        res.status(500).json({message: "could not delete"});
     });
 });
 
