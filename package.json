@@ -1,0 +1,20 @@
+{
+  "name": "Sprint-Challenge-Node-Express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/david-pok/Sprint-Challenge-Node-Express.git",
+  "author": "David Pok <david.pok@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "Router": "^2.1.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "router": "^1.3.3",
+    "sqlite3": "^4.0.2"
+  }
+}
